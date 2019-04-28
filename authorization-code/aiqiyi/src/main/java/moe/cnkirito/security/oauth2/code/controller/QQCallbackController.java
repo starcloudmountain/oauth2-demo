@@ -39,7 +39,7 @@ public class QQCallbackController {
 
     @RequestMapping("/aiqiyi/qq/redirect")
     public String getToken(@RequestParam String code){
-        log.info("receive code {}",code);
+        //log.info("receive code {}",code);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         MultiValueMap<String, String> params= new LinkedMultiValueMap<>();
@@ -51,7 +51,7 @@ public class QQCallbackController {
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
         ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/oauth/token", requestEntity, String.class);
         String token = response.getBody();
-        log.info("token => {}",token);
+        //log.info("token => {}",token);
         return token;
     }
 
